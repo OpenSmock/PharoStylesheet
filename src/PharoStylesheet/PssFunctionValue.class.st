@@ -22,6 +22,13 @@ PssFunctionValue >> args: anObject [
 	args := anObject
 ]
 
+{ #category : #properties }
+PssFunctionValue >> background: aBackground [
+	aBackground image: (PssFunctionBuilder 
+		perform: self value asMutator 
+		withArguments: self args)
+]
+
 { #category : #testing }
 PssFunctionValue >> isFunction [
 	^ true

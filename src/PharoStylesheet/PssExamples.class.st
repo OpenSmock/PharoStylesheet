@@ -7,8 +7,7 @@ Class {
 { #category : #examples }
 PssExamples class >> buttons [
 
-	^ PssParser
-		parse:
+	^ self parse:
 			'
 	BlButton { 
 		background-color : green600;
@@ -37,8 +36,7 @@ PssExamples class >> buttons [
 
 { #category : #examples }
 PssExamples class >> example1 [
-	(PssParser 
-		parse:'
+	(self parse:'
 .foo.bar:hovered > .bar:focused, BlButton.blue .text, .box { 
 	opacity: 0.50;
 	background-color : rgba(grey500, 0.5);
@@ -66,8 +64,7 @@ PssExamples class >> example1 [
 
 { #category : #examples }
 PssExamples class >> example2 [
-	(PssParser  
-		parse:'
+	(self 	parse:'
 .foo.bar:hovered > .bar:focused, BlButton.blue .text, .box { 
 	opacity: 0.50;
 
@@ -76,8 +73,7 @@ PssExamples class >> example2 [
 
 { #category : #examples }
 PssExamples class >> example3WithMedia [
-	(PssParser
-		parse:'
+	(self parse:'
 .foo.bar:hovered > .bar:focused, BlButton.blue .text, .box { 
 	opacity: 0.50;
 
@@ -94,12 +90,16 @@ PssExamples class >> example3WithMedia [
 
 { #category : #examples }
 PssExamples class >> example4 [
-	^(PssParser
-		parse:'
+	^(self parse:'
 		
 .test { 
 	background-color : rgba(grey500, 0.5);
  }
 
 ')
+]
+
+{ #category : #parsing }
+PssExamples class >> parse: aString [
+	^ PssSimpleParser parse: aString
 ]
