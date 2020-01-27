@@ -4,16 +4,13 @@ A PssBorderTest is a test class for testing the behavior of PssBorder
 Class {
 	#name : #PssBorderTest,
 	#superclass : #TestCase,
+	#traits : 'TPssModelTest',
+	#classTraits : 'TPssModelTest classTrait',
 	#instVars : [
 		'result'
 	],
 	#category : #'PharoStylesheet-Model-Tests-Properties'
 }
-
-{ #category : #parsing }
-PssBorderTest >> parse: aString [
-	^ PssModelParser parse: aString
-]
 
 { #category : #tests }
 PssBorderTest >> testBorder [
@@ -23,10 +20,12 @@ PssBorderTest >> testBorder [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
-	property := declaration properties at: #border.
+	self assert: rule declarations size equals: 1.
 	
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
+	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self assert: property isUniform.
 	self assert: property all width equals: (PssValue px: 1).
@@ -43,11 +42,12 @@ PssBorderTest >> testBorderBottom [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	self assert: property bottom width equals: (PssValue px: 1).
@@ -64,11 +64,12 @@ PssBorderTest >> testBorderBottomColor [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -90,11 +91,12 @@ PssBorderTest >> testBorderBottomStyle [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -116,11 +118,12 @@ PssBorderTest >> testBorderBottomWidth [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -142,11 +145,12 @@ PssBorderTest >> testBorderColor [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self assert: property isUniform.
 	self assert: property all color equals: (PssColorValue value: Color black).
@@ -162,11 +166,12 @@ PssBorderTest >> testBorderColor2 [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -194,11 +199,12 @@ PssBorderTest >> testBorderColor3 [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -226,11 +232,12 @@ PssBorderTest >> testBorderColor4 [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -258,11 +265,12 @@ PssBorderTest >> testBorderLeft [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	self assert: property left width equals: (PssValue px: 1).
@@ -279,11 +287,12 @@ PssBorderTest >> testBorderLeftColor [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -305,11 +314,12 @@ PssBorderTest >> testBorderLeftStyle [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -331,11 +341,12 @@ PssBorderTest >> testBorderLeftWidth [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -357,11 +368,12 @@ PssBorderTest >> testBorderRight [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	self assert: property right width equals: (PssValue px: 1).
@@ -378,11 +390,12 @@ PssBorderTest >> testBorderRightColor [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -404,11 +417,12 @@ PssBorderTest >> testBorderRightStyle [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -430,11 +444,12 @@ PssBorderTest >> testBorderRightWidth [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -456,11 +471,12 @@ PssBorderTest >> testBorderStyle [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self assert: property isUniform.
 	self assert: property all style equals: (PssSymbolValue value: #dotted).
@@ -476,11 +492,12 @@ PssBorderTest >> testBorderStyle2 [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -508,11 +525,12 @@ PssBorderTest >> testBorderStyle3 [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -540,11 +558,12 @@ PssBorderTest >> testBorderStyle4 [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -572,11 +591,12 @@ PssBorderTest >> testBorderTop [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	self assert: property top width equals: (PssValue px: 1).
@@ -593,11 +613,12 @@ PssBorderTest >> testBorderTopColor [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -619,11 +640,12 @@ PssBorderTest >> testBorderTopStyle [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -645,11 +667,12 @@ PssBorderTest >> testBorderTopWidth [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -671,11 +694,12 @@ PssBorderTest >> testBorderWidth [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self assert: property isUniform.
 	self assert: property all width equals: (PssPixelValue value: 1).
@@ -691,11 +715,12 @@ PssBorderTest >> testBorderWidth2 [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -723,11 +748,12 @@ PssBorderTest >> testBorderWidth3 [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -755,11 +781,12 @@ PssBorderTest >> testBorderWidth4 [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	
@@ -780,7 +807,7 @@ PssBorderTest >> testBorderWidth4 [
 ]
 
 { #category : #tests }
-PssBorderTest >> testMerge [
+PssBorderTest >> testOverwriteMerge [
 
 	| rule declaration property |
 	result := self parse: '.a { 
@@ -791,11 +818,12 @@ PssBorderTest >> testMerge [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
+	self assert: rule declarations size equals: 1.
 	
-	property := declaration properties at: #border.
+	declaration := rule declarations first.
+	self assert: declaration property equals: #border.
 	
+	property := declaration model.
 	self assert: property class equals: PssBorder.
 	self deny: property isUniform.
 	

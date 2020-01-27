@@ -4,6 +4,8 @@ A PssBorderPropertyTest is a test class for testing the behavior of PssBorderPro
 Class {
 	#name : #PssBorderPropertyTest,
 	#superclass : #TestCase,
+	#traits : 'TPssModelTest',
+	#classTraits : 'TPssModelTest classTrait',
 	#category : #'PharoStylesheet-Model-Tests-Properties'
 }
 

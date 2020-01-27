@@ -1,5 +1,5 @@
 Class {
-	#name : #PssProperty,
+	#name : #PssPropertyModel,
 	#superclass : #Object,
 	#instVars : [
 		'important'
@@ -8,22 +8,27 @@ Class {
 }
 
 { #category : #accessing }
-PssProperty >> important [
+PssPropertyModel class >> symbol [
+	^ self subclassResponsibility 
+]
+
+{ #category : #accessing }
+PssPropertyModel >> important [
 	^ important
 ]
 
 { #category : #accessing }
-PssProperty >> important: anObject [
+PssPropertyModel >> important: anObject [
 	important := anObject
 ]
 
 { #category : #initialization }
-PssProperty >> initialize [ 
+PssPropertyModel >> initialize [
 	super initialize.
 	important := false.
 ]
 
 { #category : #API }
-PssProperty >> merge: aProperty [
+PssPropertyModel >> overwriteMerge: aProperty [
 	^ self subclassResponsibility 
 ]

@@ -1,6 +1,6 @@
 Class {
 	#name : #PssLength,
-	#superclass : #PssProperty,
+	#superclass : #PssPropertyModel,
 	#instVars : [
 		'value',
 		'min',
@@ -8,6 +8,11 @@ Class {
 	],
 	#category : #'PharoStylesheet-Model-Properties'
 }
+
+{ #category : #accessing }
+PssLength class >> symbol [
+	^ #length
+]
 
 { #category : #accessing }
 PssLength >> max [

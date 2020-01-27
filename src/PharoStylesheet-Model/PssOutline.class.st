@@ -1,6 +1,6 @@
 Class {
 	#name : #PssOutline,
-	#superclass : #PssProperty,
+	#superclass : #PssPropertyModel,
 	#instVars : [
 		'style',
 		'color',
@@ -9,6 +9,11 @@ Class {
 	],
 	#category : #'PharoStylesheet-Model-Properties'
 }
+
+{ #category : #accessing }
+PssOutline class >> symbol [
+	^ #outline
+]
 
 { #category : #accessing }
 PssOutline >> color [

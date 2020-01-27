@@ -1,11 +1,16 @@
 Class {
 	#name : #PssMargin,
-	#superclass : #PssProperty,
+	#superclass : #PssPropertyModel,
 	#instVars : [
 		'sideProperty'
 	],
 	#category : #'PharoStylesheet-Model-Properties'
 }
+
+{ #category : #accessing }
+PssMargin class >> symbol [
+	^ #margin
+]
 
 { #category : #API }
 PssMargin >> margin: aValue [

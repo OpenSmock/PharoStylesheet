@@ -29,14 +29,3 @@ PssSimpleParser >> declaration [
 PssSimpleParser >> declarations [
 	^ super declarations ==> [ :nodes | nodes reject: [ :each | each isKindOf: PPToken ] ]
 ]
-
-{ #category : #grammar }
-PssSimpleParser >> rule [
-	^ super rule
-		==> [ :nodes | | collection |
-			collection := nodes third ifNil: [ OrderedCollection new ].
-			PssRule new
-				selectors: nodes first;
-				declarations: collection;
-				yourself ]
-]

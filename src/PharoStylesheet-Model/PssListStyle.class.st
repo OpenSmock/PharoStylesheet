@@ -1,6 +1,6 @@
 Class {
 	#name : #PssListStyle,
-	#superclass : #PssProperty,
+	#superclass : #PssPropertyModel,
 	#instVars : [
 		'type',
 		'position',
@@ -8,6 +8,11 @@ Class {
 	],
 	#category : #'PharoStylesheet-Model-Properties'
 }
+
+{ #category : #accessing }
+PssListStyle class >> symbol [
+	^ #listStyle
+]
 
 { #category : #accessing }
 PssListStyle >> image [

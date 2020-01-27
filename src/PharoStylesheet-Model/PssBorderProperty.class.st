@@ -32,7 +32,7 @@ PssBorderProperty >> color: aColor [
 ]
 
 { #category : #API }
-PssBorderProperty >> merge: aBorderProperty [
+PssBorderProperty >> overwriteMerge: aBorderProperty [
 	aBorderProperty color ifNotNil: [ self color: aBorderProperty color ].
 	aBorderProperty style ifNotNil: [ self style: aBorderProperty style ].
 	aBorderProperty width ifNotNil: [ self width: aBorderProperty width ].

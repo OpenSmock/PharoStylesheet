@@ -144,6 +144,23 @@ PssStylesheet >> origin: anObject [
 	origin := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+PssStylesheet >> reducedRuleFor: aStyleable [
+	| matchedRules reducedRule |
+	matchedRules := (self matchingRulesFor: aStyleable) 
+			sort: [ :r1 :r2 | r1 specificity <= r2 specificity ].
+	
+	reducedRule := matchedRules removeFirst.
+	matchedRules do: [ :moreSpecRule |
+		moreSpecRule declarations do: [ :moreSpecDecl | 
+			reducedRule declarations
+				detect: [ :lessSpecDecl | lessSpecDecl property = lessSpecDecl property ]
+				ifFound: [ :lessSpecDecl | lessSpecDecl model overwriteMerge: moreSpecDecl model ]
+				ifNone: [ reducedRule declarations add: moreSpecDecl ] ] ].
+		
+	^ reducedRule
+]
+
 { #category : #accessing }
 PssStylesheet >> rules [
 	^ rules

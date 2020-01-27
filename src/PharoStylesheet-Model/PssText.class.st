@@ -1,6 +1,6 @@
 Class {
 	#name : #PssText,
-	#superclass : #PssProperty,
+	#superclass : #PssPropertyModel,
 	#instVars : [
 		'color',
 		'direction',
@@ -15,6 +15,11 @@ Class {
 	],
 	#category : #'PharoStylesheet-Model-Properties'
 }
+
+{ #category : #accessing }
+PssText class >> symbol [
+	^ #text
+]
 
 { #category : #accessing }
 PssText >> align [

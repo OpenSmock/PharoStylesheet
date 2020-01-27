@@ -53,6 +53,14 @@ PssMatchedRule >> declarations: anObject [
 	declarations := anObject
 ]
 
+{ #category : #printing }
+PssMatchedRule >> printOn: aStream [
+	super printOn: aStream.
+	aStream nextPut: $(.
+	self selector printOn: aStream.
+	aStream nextPut: $).
+]
+
 { #category : #accessing }
 PssMatchedRule >> selector [
 	^ selector

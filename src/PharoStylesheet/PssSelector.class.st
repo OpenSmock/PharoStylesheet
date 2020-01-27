@@ -48,13 +48,13 @@ PssSelector class >> fromSymbols: aSymbolList [
 		do:
 			[ :aSymb | 
 			aSymb = #>
-				ifTrue: [ relationships add: CSSRelation CHILD ]
+				ifTrue: [ relationships add: PssRelation CHILD ]
 				ifFalse:
 					[ 
 					(aSymb = aSymbolList first) not
-						ifTrue: [ relationships add: CSSRelation DESCENDANT ].
+						ifTrue: [ relationships add: PssRelation DESCENDANT ].
 					selectors add: (self fromSymbol: aSymb) ] ].
-	^ (CSSCompoundSelector selectors: selectors relationships: relationships)
+	^ (PssCompoundSelector selectors: selectors relationships: relationships)
 		update;
 		yourself
 ]

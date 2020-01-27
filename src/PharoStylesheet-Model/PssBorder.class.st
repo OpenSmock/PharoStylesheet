@@ -1,11 +1,16 @@
 Class {
 	#name : #PssBorder,
-	#superclass : #PssProperty,
+	#superclass : #PssPropertyModel,
 	#instVars : [
 		'sideProperty'
 	],
 	#category : #'PharoStylesheet-Model-Properties'
 }
+
+{ #category : #accessing }
+PssBorder class >> symbol [
+	^ #bordeer
+]
 
 { #category : #accessing }
 PssBorder >> all [ 
@@ -191,8 +196,8 @@ PssBorder >> left [
 ]
 
 { #category : #API }
-PssBorder >> merge: aBorder [
-	self sideProperty merge: aBorder sideProperty
+PssBorder >> overwriteMerge: aBorder [
+	self sideProperty overwriteMerge: aBorder sideProperty
 ]
 
 { #category : #accessing }

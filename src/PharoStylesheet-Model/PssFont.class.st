@@ -1,6 +1,6 @@
 Class {
 	#name : #PssFont,
-	#superclass : #PssProperty,
+	#superclass : #PssPropertyModel,
 	#instVars : [
 		'family',
 		'size',
@@ -10,6 +10,11 @@ Class {
 	],
 	#category : #'PharoStylesheet-Model-Properties'
 }
+
+{ #category : #accessing }
+PssFont class >> symbol [
+	^ #font
+]
 
 { #category : #accessing }
 PssFont >> family [
@@ -22,7 +27,7 @@ PssFont >> family: anObject [
 ]
 
 { #category : #API }
-PssFont >> merge: aProperty [
+PssFont >> overwriteMerge: aProperty [
 	aProperty family ifNotNil: [ self family: aProperty family ].
 	aProperty size ifNotNil: [ self size: aProperty size ].
 	aProperty style ifNotNil: [ self style: aProperty style ].

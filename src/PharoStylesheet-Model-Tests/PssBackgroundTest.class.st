@@ -4,16 +4,13 @@ A PssBackgroundTest is a test class for testing the behavior of PssBackground
 Class {
 	#name : #PssBackgroundTest,
 	#superclass : #TestCase,
+	#traits : 'TPssModelTest',
+	#classTraits : 'TPssModelTest classTrait',
 	#instVars : [
 		'result'
 	],
 	#category : #'PharoStylesheet-Model-Tests-Properties'
 }
-
-{ #category : #parsing }
-PssBackgroundTest >> parse: aString [
-	^ PssModelParser parse: aString
-]
 
 { #category : #tests }
 PssBackgroundTest >> testBackground [
@@ -23,10 +20,12 @@ PssBackgroundTest >> testBackground [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
-	property := declaration properties at: #background.
+	self assert: rule declarations size equals: 1.
 	
+	declaration := rule declarations first.
+	self assert: declaration property equals: #background.
+	
+	property := declaration model.
 	self assert: property class equals: PssBackground.
 	self assert: property attachment equals: #noRepeat.
 	self assert: property color equals: (Color fromHexString: #ffffff).
@@ -44,10 +43,12 @@ PssBackgroundTest >> testBackgroundAttachment [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
-	property := declaration properties at: #background.
+	self assert: rule declarations size equals: 1.
 	
+	declaration := rule declarations first.
+	self assert: declaration property equals: #background.
+	
+	property := declaration model.
 	self assert: property class equals: PssBackground.
 	self assert: property attachment equals: #fixed.
 	
@@ -66,10 +67,12 @@ PssBackgroundTest >> testBackgroundColor [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
-	property := declaration properties at: #background.
+	self assert: rule declarations size equals: 1.
 	
+	declaration := rule declarations first.
+	self assert: declaration property equals: #background.
+	
+	property := declaration model.
 	self assert: property class equals: PssBackground.
 	self assert: property color equals: (Color fromHexString: '123456').
 	self assert: property attachment equals: nil.
@@ -87,10 +90,12 @@ PssBackgroundTest >> testBackgroundImage [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
-	property := declaration properties at: #background.
+	self assert: rule declarations size equals: 1.
 	
+	declaration := rule declarations first.
+	self assert: declaration property equals: #background.
+	
+	property := declaration model.
 	self assert: property class equals: PssBackground.
 	self assert: property image name equals: 'paper.gif'.
 	
@@ -109,10 +114,12 @@ PssBackgroundTest >> testBackgroundPosition [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
-	property := declaration properties at: #background.
+	self assert: rule declarations size equals: 1.
 	
+	declaration := rule declarations first.
+	self assert: declaration property equals: #background.
+	
+	property := declaration model.
 	self assert: property class equals: PssBackground.
 	self assert: property repeat equals: #repeatX.
 	
@@ -131,10 +138,12 @@ PssBackgroundTest >> testBackgroundRepeat [
 	self assert: result rules size equals: 1.
 	
 	rule := result rules first.
-	declaration := rule declaration.
-	self assert: declaration isNotNil.
-	property := declaration properties at: #background.
+	self assert: rule declarations size equals: 1.
 	
+	declaration := rule declarations first.
+	self assert: declaration property equals: #background.
+	
+	property := declaration model.
 	self assert: property class equals: PssBackground.
 	self assert: property repeat equals: #repeatX.
 	
@@ -146,7 +155,7 @@ PssBackgroundTest >> testBackgroundRepeat [
 ]
 
 { #category : #test }
-PssBackgroundTest >> testMerge [
+PssBackgroundTest >> testOverwriteMerge [
 
 	self flag: #toImplement.
 	self assert: false

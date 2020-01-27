@@ -78,6 +78,19 @@ PssCompoundSelector >> matchesStyleable: aStyleable selectorIndex: aSelectorInde
 		selectorIndex: aSelectorIndex
 ]
 
+{ #category : #printing }
+PssCompoundSelector >> printOn: aStream [
+	| s |
+	s := self relationships size.
+	s timesRepeat: [ :i |
+		(self selectors at: i) printOn: aStream.
+		aStream nextPut: Character space.
+		(self relationships at: i) printOn: aStream. 
+		aStream nextPut: Character space.
+	].
+		(self selectors at: s + 1) printOn: aStream.
+]
+
 { #category : #accessing }
 PssCompoundSelector >> relationships [
 	^ relationships

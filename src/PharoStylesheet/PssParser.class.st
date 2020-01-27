@@ -251,6 +251,12 @@ PssParser >> pseudoClassSelectorToken [
 { #category : #grammar }
 PssParser >> rule [
 	^ super rule
+		==> [ :nodes | | collection |
+			collection := nodes third ifNil: [ OrderedCollection new ].
+			PssRule new
+				selectors: nodes first;
+				declarations: collection;
+				yourself ]
 ]
 
 { #category : #'grammar selector' }

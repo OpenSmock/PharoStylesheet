@@ -1,6 +1,6 @@
 Class {
 	#name : #PssBackground,
-	#superclass : #PssProperty,
+	#superclass : #PssPropertyModel,
 	#instVars : [
 		'color',
 		'image',
@@ -10,6 +10,11 @@ Class {
 	],
 	#category : #'PharoStylesheet-Model-Properties'
 }
+
+{ #category : #accessing }
+PssBackground class >> symbol [
+	^ #background
+]
 
 { #category : #accessing }
 PssBackground >> attachment [
@@ -72,7 +77,7 @@ PssBackground >> image: anObject [
 ]
 
 { #category : #API }
-PssBackground >> merge: aProperty [
+PssBackground >> overwriteMerge: aProperty [
 	aProperty attachment ifNotNil: [ self attachment: aProperty attachment ].
 	aProperty color ifNotNil: [ self color: aProperty color ].
 	aProperty image ifNotNil: [ self image: aProperty image ].

@@ -51,11 +51,11 @@ PssSideProperty >> left: anObject [
 ]
 
 { #category : #API }
-PssSideProperty >> merge: aSideProperty [
-	self top merge: aSideProperty top.
-	self right merge: aSideProperty right.
-	self bottom merge: aSideProperty bottom.
-	self left merge: aSideProperty left.
+PssSideProperty >> overwriteMerge: aSideProperty [
+	self top overwriteMerge: aSideProperty top.
+	self right overwriteMerge: aSideProperty right.
+	self bottom overwriteMerge: aSideProperty bottom.
+	self left overwriteMerge: aSideProperty left.
 ]
 
 { #category : #accessing }
