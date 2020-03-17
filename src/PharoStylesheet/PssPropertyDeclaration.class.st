@@ -7,6 +7,13 @@ Class {
 	#category : #'PharoStylesheet-Core'
 }
 
+{ #category : #'instance creation' }
+PssPropertyDeclaration class >> newFrom: aDeclaration [
+	^ (self newFrom: aDeclaration)
+		value: aDeclaration value;
+		yourself
+]
+
 { #category : #'as yet unclassified' }
 PssPropertyDeclaration >> = aDeclaration [
 	^ super = aDeclaration and: [ self value = aDeclaration value ]

@@ -49,8 +49,8 @@ PssMatchedRule >> declarations [
 ]
 
 { #category : #accessing }
-PssMatchedRule >> declarations: anObject [
-	declarations := anObject
+PssMatchedRule >> declarations: aList [
+	declarations := aList collect: [ :decl | decl copy ].
 ]
 
 { #category : #printing }

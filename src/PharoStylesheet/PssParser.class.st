@@ -4,6 +4,43 @@ Class {
 	#category : #'PharoStylesheet-Parser'
 }
 
+{ #category : #parsing }
+PssParser class >> parse: aString [
+	| string |
+	string := self removeComments: aString.
+	^ super parse: string.
+]
+
+{ #category : #parsing }
+PssParser class >> removeComments: aString [
+	| char readStream writeStream isComment |
+	readStream := aString readStream.
+	writeStream := '' writeStream.
+	isComment := false.
+	[ readStream atEnd ] whileFalse: [ 
+		char := readStream next.
+		isComment 
+			ifTrue: [ 
+				((char = $*) & (readStream peek = $/))
+					ifTrue: [ 
+						isComment := false.
+						readStream next.	
+					]
+			]
+			ifFalse: [  
+				((char = $/) & (readStream peek = $*))
+					ifTrue: [ 
+						isComment := true.
+						readStream next.
+					]
+					ifFalse: [ 
+						writeStream << char.	
+					]
+			]
+	 ].
+	^ writeStream contents
+]
+
 { #category : #'grammar value' }
 PssParser >> arrayToken [
 	^ super arrayToken

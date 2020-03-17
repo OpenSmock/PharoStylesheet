@@ -1,7 +1,7 @@
 Class {
 	#name : #PssFontStyle,
 	#superclass : #PssPropertyValue,
-	#category : #'PharoStylesheet-Model-Enumerations'
+	#category : #'PharoStylesheet-Model-Declarations - Font'
 }
 
 { #category : #enumeration }
@@ -12,6 +12,11 @@ PssFontStyle class >> inherit [
 { #category : #enumeration }
 PssFontStyle class >> initial [
 	^ self new value: #initial
+]
+
+{ #category : #enumeration }
+PssFontStyle class >> italic [
+	^ self new value: #italic
 ]
 
 { #category : #enumeration }

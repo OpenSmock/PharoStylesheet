@@ -1,7 +1,7 @@
 Class {
 	#name : #PssFontVariant,
 	#superclass : #PssPropertyValue,
-	#category : #'PharoStylesheet-Model-Enumerations'
+	#category : #'PharoStylesheet-Model-Declarations - Font'
 }
 
 { #category : #enumeration }

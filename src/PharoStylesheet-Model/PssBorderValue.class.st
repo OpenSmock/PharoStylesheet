@@ -1,59 +1,64 @@
 Class {
-	#name : #PssBorderProperty,
+	#name : #PssBorderValue,
 	#superclass : #Object,
 	#instVars : [
 		'style',
 		'width',
 		'color'
 	],
-	#category : #'PharoStylesheet-Model-Properties'
+	#category : #'PharoStylesheet-Model-Declarations - Border'
 }
 
 { #category : #comparing }
-PssBorderProperty >> = aBorderProperty [
+PssBorderValue >> = aBorderProperty [
 	^ self color = aBorderProperty color
 		and: [ self style = aBorderProperty style
 			and: [ self width = aBorderProperty width ] ]
 ]
 
 { #category : #API }
-PssBorderProperty >> borderStyle: aBorderStyle [
+PssBorderValue >> borderStyle: aBorderStyle [
 	self style: aBorderStyle
 ]
 
 { #category : #accessing }
-PssBorderProperty >> color [
+PssBorderValue >> color [
 	^ color
 ]
 
 { #category : #accessing }
-PssBorderProperty >> color: aColor [
+PssBorderValue >> color: aColor [
 	color := aColor
 ]
 
 { #category : #API }
-PssBorderProperty >> overwriteMerge: aBorderProperty [
+PssBorderValue >> outline: aValue [
+	aValue outline: self
+]
+
+{ #category : #API }
+PssBorderValue >> overwriteMerge: aBorderProperty [
 	aBorderProperty color ifNotNil: [ self color: aBorderProperty color ].
 	aBorderProperty style ifNotNil: [ self style: aBorderProperty style ].
 	aBorderProperty width ifNotNil: [ self width: aBorderProperty width ].
 ]
 
 { #category : #accessing }
-PssBorderProperty >> style [
+PssBorderValue >> style [
 	^ style
 ]
 
 { #category : #accessing }
-PssBorderProperty >> style: aBorderStyle [
+PssBorderValue >> style: aBorderStyle [
 	style := aBorderStyle
 ]
 
 { #category : #accessing }
-PssBorderProperty >> width [
+PssBorderValue >> width [
 	^ width
 ]
 
 { #category : #accessing }
-PssBorderProperty >> width: aPixelValue [
+PssBorderValue >> width: aPixelValue [
 	width := aPixelValue
 ]

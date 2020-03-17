@@ -1,5 +1,5 @@
 Class {
-	#name : #PssFont,
+	#name : #PssFontModel,
 	#superclass : #PssPropertyModel,
 	#instVars : [
 		'family',
@@ -8,69 +8,74 @@ Class {
 		'variant',
 		'weight'
 	],
-	#category : #'PharoStylesheet-Model-Properties'
+	#category : #'PharoStylesheet-Model-Declarations - Font'
 }
 
 { #category : #accessing }
-PssFont class >> symbol [
+PssFontModel class >> symbol [
 	^ #font
 ]
 
 { #category : #accessing }
-PssFont >> family [
-	^ family
-]
-
-{ #category : #accessing }
-PssFont >> family: anObject [
-	family := anObject
-]
-
-{ #category : #API }
-PssFont >> overwriteMerge: aProperty [
-	aProperty family ifNotNil: [ self family: aProperty family ].
-	aProperty size ifNotNil: [ self size: aProperty size ].
-	aProperty style ifNotNil: [ self style: aProperty style ].
-	aProperty variant ifNotNil: [ self variant: aProperty variant ].
-	aProperty weight ifNotNil: [ self weight: aProperty weight ].
-]
-
-{ #category : #accessing }
-PssFont >> size [
-	^ size
-]
-
-{ #category : #accessing }
-PssFont >> size: anObject [
-	size := anObject
-]
-
-{ #category : #accessing }
-PssFont >> style [
-	^ style
-]
-
-{ #category : #accessing }
-PssFont >> style: anObject [
-	style := anObject
-]
-
-{ #category : #accessing }
-PssFont >> variant [
-	^ variant
-]
-
-{ #category : #accessing }
-PssFont >> variant: anObject [
-	variant := anObject
-]
-
-{ #category : #accessing }
-PssFont >> weight [
+PssFontModel >> basicWeight [
 	^ weight
 ]
 
 { #category : #accessing }
-PssFont >> weight: anObject [
+PssFontModel >> family [
+	^ family
+]
+
+{ #category : #accessing }
+PssFontModel >> family: anObject [
+	family := anObject
+]
+
+{ #category : #API }
+PssFontModel >> overwriteMerge: aProperty [
+	aProperty family ifNotNil: [ self family: aProperty family ].
+	aProperty size ifNotNil: [ self size: aProperty size ].
+	aProperty style ifNotNil: [ self style: aProperty style ].
+	aProperty variant ifNotNil: [ self variant: aProperty variant ].
+	aProperty basicWeight ifNotNil: [ self weight: aProperty basicWeight ].
+]
+
+{ #category : #accessing }
+PssFontModel >> size [
+	^ size
+]
+
+{ #category : #accessing }
+PssFontModel >> size: aValue [
+	size := aValue
+]
+
+{ #category : #accessing }
+PssFontModel >> style [
+	^ style
+]
+
+{ #category : #accessing }
+PssFontModel >> style: anObject [
+	style := anObject
+]
+
+{ #category : #accessing }
+PssFontModel >> variant [
+	^ variant
+]
+
+{ #category : #accessing }
+PssFontModel >> variant: anObject [
+	variant := anObject
+]
+
+{ #category : #accessing }
+PssFontModel >> weight [
+	^ self basicWeight ifNil: [ #regular ].
+]
+
+{ #category : #accessing }
+PssFontModel >> weight: anObject [
 	weight := anObject
 ]

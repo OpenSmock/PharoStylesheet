@@ -9,6 +9,14 @@ Class {
 	#category : #'PharoStylesheet-Core'
 }
 
+{ #category : #'instance creation' }
+PssDeclaration class >> newFrom: aDeclaration [
+	^ self new
+		important: aDeclaration important;
+		property: aDeclaration property;
+		yourself
+]
+
 { #category : #'as yet unclassified' }
 PssDeclaration >> = aDeclaration [
 	^ self property = aDeclaration property
@@ -16,7 +24,7 @@ PssDeclaration >> = aDeclaration [
 
 { #category : #'adding/removing' }
 PssDeclaration >> addTo: aRule [
-	self subclassResponsibility 
+	aRule declarations add: self
 ]
 
 { #category : #accessing }
@@ -46,8 +54,8 @@ PssDeclaration >> property [
 ]
 
 { #category : #accessing }
-PssDeclaration >> property: anObject [
-	property := anObject
+PssDeclaration >> property: aSymbol [ 
+	property := aSymbol
 ]
 
 { #category : #accessing }

@@ -1,7 +1,7 @@
 Class {
 	#name : #PssBorderStyle,
 	#superclass : #PssPropertyValue,
-	#category : #'PharoStylesheet-Model-Enumerations'
+	#category : #'PharoStylesheet-Model-Declarations - Border'
 }
 
 { #category : #enumeration }

@@ -1,7 +1,7 @@
 Class {
 	#name : #PssBackgroundAttachment,
 	#superclass : #PssPropertyValue,
-	#category : #'PharoStylesheet-Model-Enumerations'
+	#category : #'PharoStylesheet-Model-Declarations - Background'
 }
 
 { #category : #enumeration }

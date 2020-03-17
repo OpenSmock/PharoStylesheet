@@ -68,6 +68,21 @@ PssArrayValue >> isArray [
 	^ true
 ]
 
+{ #category : #properties }
+PssArrayValue >> linearGradient: aLinearGradient [
+	self value do: [ :e | e linearGradient: aLinearGradient ]
+]
+
+{ #category : #properties }
+PssArrayValue >> margin: aMargin [
+	sidePropertyBlock value: aMargin sideProperty value: #value:
+]
+
+{ #category : #properties }
+PssArrayValue >> outline: aBorderValue [
+	self value do: [ :e | e outline: aBorderValue ]
+]
+
 { #category : #initialization }
 PssArrayValue >> setSidePropertyForFourValues [
 	sidePropertyBlock := [ :aSideProperty :aMutator |

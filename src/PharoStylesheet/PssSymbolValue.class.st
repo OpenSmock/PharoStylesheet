@@ -23,3 +23,17 @@ PssSymbolValue >> backgroundRepeat: aBackground [
 PssSymbolValue >> border: aBorderProperty [
 	aBorderProperty style: self
 ]
+
+{ #category : #properties }
+PssSymbolValue >> linearGradient: aLinearGradient [
+	self value = #to ifTrue: [ ^ self ].
+	self value = #right ifTrue: [ ^ aLinearGradient toRight ].
+	self value = #bottom ifTrue: [ ^ aLinearGradient toBottom ].
+	self value = #deg ifTrue: [ ^ aLinearGradient setAngleInDegree ].
+	self halt.
+]
+
+{ #category : #'accessing structure variables' }
+PssSymbolValue >> outline: aBorderValue [
+	aBorderValue style: (PssBorderStyle perform: self value)
+]

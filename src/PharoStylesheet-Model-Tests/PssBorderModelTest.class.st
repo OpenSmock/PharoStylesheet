@@ -2,7 +2,7 @@
 A PssBorderTest is a test class for testing the behavior of PssBorder
 "
 Class {
-	#name : #PssBorderTest,
+	#name : #PssBorderModelTest,
 	#superclass : #TestCase,
 	#traits : 'TPssModelTest',
 	#classTraits : 'TPssModelTest classTrait',
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : #tests }
-PssBorderTest >> testBorder [
+PssBorderModelTest >> testBorder [
 	| rule declaration property |
 	result := self parse: '.a { border: 1px solid #123456; }'.
 	
@@ -26,8 +26,8 @@ PssBorderTest >> testBorder [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self assert: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self assert: property allSidesAreUniform.
 	self assert: property all width equals: (PssValue px: 1).
 	self assert: property all style equals: PssBorderStyle solid.
 	self assert: property all color equals: (Color fromHexString: '123456').
@@ -35,7 +35,7 @@ PssBorderTest >> testBorder [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderBottom [
+PssBorderModelTest >> testBorderBottom [
 	| rule declaration property |
 	result := self parse: '.a { border-bottom: 1px solid #123456; }'.
 	
@@ -48,8 +48,8 @@ PssBorderTest >> testBorderBottom [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	self assert: property bottom width equals: (PssValue px: 1).
 	self assert: property bottom style equals: PssBorderStyle solid.
 	self assert: property bottom color equals: (Color fromHexString: '123456').
@@ -57,7 +57,7 @@ PssBorderTest >> testBorderBottom [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderBottomColor [
+PssBorderModelTest >> testBorderBottomColor [
 	| rule declaration property |
 	result := self parse: '.a { border-bottom-color: black; }'.
 	
@@ -70,8 +70,8 @@ PssBorderTest >> testBorderBottomColor [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property bottom color equals: Color black.
 	self assert: property bottom width equals: nil.
@@ -84,7 +84,7 @@ PssBorderTest >> testBorderBottomColor [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderBottomStyle [
+PssBorderModelTest >> testBorderBottomStyle [
 	| rule declaration property |
 	result := self parse: '.a { border-bottom-style: dashed; }'.
 	
@@ -97,8 +97,8 @@ PssBorderTest >> testBorderBottomStyle [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property bottom color equals: nil.
 	self assert: property bottom width equals: nil.
@@ -111,7 +111,7 @@ PssBorderTest >> testBorderBottomStyle [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderBottomWidth [
+PssBorderModelTest >> testBorderBottomWidth [
 	| rule declaration property |
 	result := self parse: '.a { border-bottom-width: 1px; }'.
 	
@@ -124,8 +124,8 @@ PssBorderTest >> testBorderBottomWidth [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property bottom color equals: nil.
 	self assert: property bottom width equals: (PssPixelValue value: 1).
@@ -138,7 +138,7 @@ PssBorderTest >> testBorderBottomWidth [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderColor [
+PssBorderModelTest >> testBorderColor [
 	| rule declaration property |
 	result := self parse: '.a { border-color: black; }'.
 	
@@ -151,15 +151,15 @@ PssBorderTest >> testBorderColor [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self assert: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self assert: property allSidesAreUniform.
 	self assert: property all color equals: (PssColorValue value: Color black).
 	self assert: property all width equals: nil.
 	
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderColor2 [
+PssBorderModelTest >> testBorderColor2 [
 	| rule declaration property |
 	result := self parse: '.a { border-width: black white; }'.
 	
@@ -172,8 +172,8 @@ PssBorderTest >> testBorderColor2 [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top color equals: (PssColorValue value: Color black).
 	self assert: property bottom color equals: (PssColorValue value: Color black).
@@ -192,7 +192,7 @@ PssBorderTest >> testBorderColor2 [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderColor3 [
+PssBorderModelTest >> testBorderColor3 [
 	| rule declaration property |
 	result := self parse: '.a { border-width: black white red; }'.
 	
@@ -205,8 +205,8 @@ PssBorderTest >> testBorderColor3 [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top color equals: (PssColorValue value: Color black).
 	self assert: property bottom color equals: (PssColorValue value: Color red).
@@ -225,7 +225,7 @@ PssBorderTest >> testBorderColor3 [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderColor4 [
+PssBorderModelTest >> testBorderColor4 [
 	| rule declaration property |
 	result := self parse: '.a { border-width: black white red blue; }'.
 	
@@ -238,8 +238,8 @@ PssBorderTest >> testBorderColor4 [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top color equals: (PssColorValue value: Color black).
 	self assert: property right color equals: (PssColorValue value: Color white).
@@ -258,7 +258,7 @@ PssBorderTest >> testBorderColor4 [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderLeft [
+PssBorderModelTest >> testBorderLeft [
 	| rule declaration property |
 	result := self parse: '.a { border-left: 1px solid #123456; }'.
 	
@@ -271,8 +271,8 @@ PssBorderTest >> testBorderLeft [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	self assert: property left width equals: (PssValue px: 1).
 	self assert: property left style equals: PssBorderStyle solid.
 	self assert: property left color equals: (Color fromHexString: '123456').
@@ -280,7 +280,7 @@ PssBorderTest >> testBorderLeft [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderLeftColor [
+PssBorderModelTest >> testBorderLeftColor [
 	| rule declaration property |
 	result := self parse: '.a { border-left-color: black; }'.
 	
@@ -293,8 +293,8 @@ PssBorderTest >> testBorderLeftColor [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property left color equals: Color black.
 	self assert: property left width equals: nil.
@@ -307,7 +307,7 @@ PssBorderTest >> testBorderLeftColor [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderLeftStyle [
+PssBorderModelTest >> testBorderLeftStyle [
 	| rule declaration property |
 	result := self parse: '.a { border-left-style: dashed; }'.
 	
@@ -320,8 +320,8 @@ PssBorderTest >> testBorderLeftStyle [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property left color equals: nil.
 	self assert: property left width equals: nil.
@@ -334,7 +334,7 @@ PssBorderTest >> testBorderLeftStyle [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderLeftWidth [
+PssBorderModelTest >> testBorderLeftWidth [
 	| rule declaration property |
 	result := self parse: '.a { border-left-width: 1px; }'.
 	
@@ -347,8 +347,8 @@ PssBorderTest >> testBorderLeftWidth [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property left color equals: nil.
 	self assert: property left width equals: (PssPixelValue value: 1).
@@ -361,7 +361,7 @@ PssBorderTest >> testBorderLeftWidth [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderRight [
+PssBorderModelTest >> testBorderRight [
 	| rule declaration property |
 	result := self parse: '.a { border-right: 1px solid #123456; }'.
 	
@@ -374,8 +374,8 @@ PssBorderTest >> testBorderRight [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	self assert: property right width equals: (PssValue px: 1).
 	self assert: property right style equals: PssBorderStyle solid.
 	self assert: property right color equals: (Color fromHexString: '123456').
@@ -383,7 +383,7 @@ PssBorderTest >> testBorderRight [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderRightColor [
+PssBorderModelTest >> testBorderRightColor [
 	| rule declaration property |
 	result := self parse: '.a { border-right-color: black; }'.
 	
@@ -396,8 +396,8 @@ PssBorderTest >> testBorderRightColor [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property right color equals: Color black.
 	self assert: property right width equals: nil.
@@ -410,7 +410,7 @@ PssBorderTest >> testBorderRightColor [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderRightStyle [
+PssBorderModelTest >> testBorderRightStyle [
 	| rule declaration property |
 	result := self parse: '.a { border-right-style: dashed; }'.
 	
@@ -423,8 +423,8 @@ PssBorderTest >> testBorderRightStyle [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property right color equals: nil.
 	self assert: property right width equals: nil.
@@ -437,7 +437,7 @@ PssBorderTest >> testBorderRightStyle [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderRightWidth [
+PssBorderModelTest >> testBorderRightWidth [
 	| rule declaration property |
 	result := self parse: '.a { border-right-width: 1px; }'.
 	
@@ -450,8 +450,8 @@ PssBorderTest >> testBorderRightWidth [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property right color equals: nil.
 	self assert: property right width equals: (PssPixelValue value: 1).
@@ -464,7 +464,7 @@ PssBorderTest >> testBorderRightWidth [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderStyle [
+PssBorderModelTest >> testBorderStyle [
 	| rule declaration property |
 	result := self parse: '.a { border-style: dotted; }'.
 	
@@ -477,15 +477,15 @@ PssBorderTest >> testBorderStyle [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self assert: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self assert: property allSidesAreUniform.
 	self assert: property all style equals: (PssSymbolValue value: #dotted).
 	self assert: property all width equals: nil.
 	
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderStyle2 [
+PssBorderModelTest >> testBorderStyle2 [
 	| rule declaration property |
 	result := self parse: '.a { border-style: dotted dashed; }'.
 	
@@ -498,8 +498,8 @@ PssBorderTest >> testBorderStyle2 [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top style equals: (PssSymbolValue value: #dotted).
 	self assert: property bottom style equals: (PssSymbolValue value: #dotted).
@@ -518,7 +518,7 @@ PssBorderTest >> testBorderStyle2 [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderStyle3 [
+PssBorderModelTest >> testBorderStyle3 [
 	| rule declaration property |
 	result := self parse: '.a { border-style: dotted solid dashed; }'.
 	
@@ -531,8 +531,8 @@ PssBorderTest >> testBorderStyle3 [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top style equals: (PssSymbolValue value: #dotted).
 	self assert: property left style equals: (PssSymbolValue value: #solid).
@@ -551,7 +551,7 @@ PssBorderTest >> testBorderStyle3 [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderStyle4 [
+PssBorderModelTest >> testBorderStyle4 [
 	| rule declaration property |
 	result := self parse: '.a { border-style: dotted solid dashed double; }'.
 	
@@ -564,8 +564,8 @@ PssBorderTest >> testBorderStyle4 [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top style equals: (PssSymbolValue value: #dotted).
 	self assert: property right style equals: (PssSymbolValue value: #solid).
@@ -584,7 +584,7 @@ PssBorderTest >> testBorderStyle4 [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderTop [
+PssBorderModelTest >> testBorderTop [
 	| rule declaration property |
 	result := self parse: '.a { border-top: 1px solid #123456; }'.
 	
@@ -597,8 +597,8 @@ PssBorderTest >> testBorderTop [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	self assert: property top width equals: (PssValue px: 1).
 	self assert: property top style equals: PssBorderStyle solid.
 	self assert: property top color equals: (Color fromHexString: '123456').
@@ -606,7 +606,7 @@ PssBorderTest >> testBorderTop [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderTopColor [
+PssBorderModelTest >> testBorderTopColor [
 	| rule declaration property |
 	result := self parse: '.a { border-top-color: black; }'.
 	
@@ -619,8 +619,8 @@ PssBorderTest >> testBorderTopColor [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top color equals: Color black.
 	self assert: property top width equals: nil.
@@ -633,7 +633,7 @@ PssBorderTest >> testBorderTopColor [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderTopStyle [
+PssBorderModelTest >> testBorderTopStyle [
 	| rule declaration property |
 	result := self parse: '.a { border-top-style: dashed; }'.
 	
@@ -646,8 +646,8 @@ PssBorderTest >> testBorderTopStyle [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top color equals: nil.
 	self assert: property top width equals: nil.
@@ -660,7 +660,7 @@ PssBorderTest >> testBorderTopStyle [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderTopWidth [
+PssBorderModelTest >> testBorderTopWidth [
 	| rule declaration property |
 	result := self parse: '.a { border-top-width: 1px; }'.
 	
@@ -673,8 +673,8 @@ PssBorderTest >> testBorderTopWidth [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top color equals: nil.
 	self assert: property top width equals: (PssPixelValue value: 1).
@@ -687,7 +687,7 @@ PssBorderTest >> testBorderTopWidth [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderWidth [
+PssBorderModelTest >> testBorderWidth [
 	| rule declaration property |
 	result := self parse: '.a { border-width: 1px; }'.
 	
@@ -700,15 +700,15 @@ PssBorderTest >> testBorderWidth [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self assert: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self assert: property allSidesAreUniform.
 	self assert: property all width equals: (PssPixelValue value: 1).
 	self assert: property all style equals: nil.
 	
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderWidth2 [
+PssBorderModelTest >> testBorderWidth2 [
 	| rule declaration property |
 	result := self parse: '.a { border-width: 1px 2px; }'.
 	
@@ -721,8 +721,8 @@ PssBorderTest >> testBorderWidth2 [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top width equals: (PssPixelValue value: 1).
 	self assert: property bottom width equals: (PssPixelValue value: 1).
@@ -741,7 +741,7 @@ PssBorderTest >> testBorderWidth2 [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderWidth3 [
+PssBorderModelTest >> testBorderWidth3 [
 	| rule declaration property |
 	result := self parse: '.a { border-width: 1px 2px 3px; }'.
 	
@@ -754,8 +754,8 @@ PssBorderTest >> testBorderWidth3 [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top width equals: (PssPixelValue value: 1).
 	self assert: property left width equals: (PssPixelValue value: 2).
@@ -774,7 +774,7 @@ PssBorderTest >> testBorderWidth3 [
 ]
 
 { #category : #tests }
-PssBorderTest >> testBorderWidth4 [
+PssBorderModelTest >> testBorderWidth4 [
 	| rule declaration property |
 	result := self parse: '.a { border-width: 1px 2px 3px 4px; }'.
 	
@@ -787,8 +787,8 @@ PssBorderTest >> testBorderWidth4 [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top width equals: (PssPixelValue value: 1).
 	self assert: property right width equals: (PssPixelValue value: 2).
@@ -807,7 +807,7 @@ PssBorderTest >> testBorderWidth4 [
 ]
 
 { #category : #tests }
-PssBorderTest >> testOverwriteMerge [
+PssBorderModelTest >> testOverwriteMerge [
 
 	| rule declaration property |
 	result := self parse: '.a { 
@@ -824,8 +824,8 @@ PssBorderTest >> testOverwriteMerge [
 	self assert: declaration property equals: #border.
 	
 	property := declaration model.
-	self assert: property class equals: PssBorder.
-	self deny: property isUniform.
+	self assert: property class equals: PssBorderModel.
+	self deny: property allSidesAreUniform.
 	
 	self assert: property top width equals: (PssValue px: 1).
 	self assert: property top style equals: PssBorderStyle solid.

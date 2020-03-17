@@ -1,5 +1,5 @@
 Class {
-	#name : #PssOutline,
+	#name : #PssOutlineModel,
 	#superclass : #PssPropertyModel,
 	#instVars : [
 		'style',
@@ -7,50 +7,50 @@ Class {
 		'width',
 		'offset'
 	],
-	#category : #'PharoStylesheet-Model-Properties'
+	#category : #'PharoStylesheet-Model-Declarations'
 }
 
 { #category : #accessing }
-PssOutline class >> symbol [
+PssOutlineModel class >> symbol [
 	^ #outline
 ]
 
 { #category : #accessing }
-PssOutline >> color [
+PssOutlineModel >> color [
 	^ color
 ]
 
 { #category : #accessing }
-PssOutline >> color: anObject [
+PssOutlineModel >> color: anObject [
 	color := anObject
 ]
 
 { #category : #accessing }
-PssOutline >> offset [
+PssOutlineModel >> offset [
 	^ offset
 ]
 
 { #category : #accessing }
-PssOutline >> offset: anObject [
+PssOutlineModel >> offset: anObject [
 	offset := anObject
 ]
 
 { #category : #accessing }
-PssOutline >> style [
+PssOutlineModel >> style [
 	^ style
 ]
 
 { #category : #accessing }
-PssOutline >> style: anObject [
+PssOutlineModel >> style: anObject [
 	style := anObject
 ]
 
 { #category : #accessing }
-PssOutline >> width [
+PssOutlineModel >> width [
 	^ width
 ]
 
 { #category : #accessing }
-PssOutline >> width: anObject [
+PssOutlineModel >> width: anObject [
 	width := anObject
 ]

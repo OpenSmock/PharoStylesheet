@@ -27,7 +27,7 @@ PssModelStylesheetTest >> test1 [
 	self assert: declaration property equals: #background.
 	
 	model := declaration model.
-	self assert: model class equals: PssBackground.
+	self assert: model class equals: PssBackgroundModel.
 	self assert: model color equals: Color black.
 	
 ]
@@ -47,7 +47,7 @@ PssModelStylesheetTest >> test2 [
 	self assert: declaration property equals: #background.
 	
 	model := declaration model.
-	self assert: model class equals: PssBackground.
+	self assert: model class equals: PssBackgroundModel.
 	self assert: model color equals: Color white.
 	
 ]
@@ -69,7 +69,7 @@ PssModelStylesheetTest >> test3 [
 	self assert: declaration property equals: #background.
 	
 	model := declaration model.
-	self assert: model class equals: PssBackground.
+	self assert: model class equals: PssBackgroundModel.
 	self assert: model color equals: Color red.
 	
 ]
@@ -92,7 +92,7 @@ PssModelStylesheetTest >> test4 [
 	self assert: declaration property equals: #background.
 	
 	model := declaration model.
-	self assert: model class equals: PssBackground.
+	self assert: model class equals: PssBackgroundModel.
 	self assert: model color equals: Color blue.
 	
 ]

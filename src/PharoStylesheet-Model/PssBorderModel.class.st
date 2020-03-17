@@ -1,29 +1,31 @@
 Class {
-	#name : #PssBorder,
+	#name : #PssBorderModel,
 	#superclass : #PssPropertyModel,
+	#traits : 'TPssSideProperty',
+	#classTraits : 'TPssSideProperty classTrait',
 	#instVars : [
 		'sideProperty'
 	],
-	#category : #'PharoStylesheet-Model-Properties'
+	#category : #'PharoStylesheet-Model-Declarations - Border'
 }
 
 { #category : #accessing }
-PssBorder class >> symbol [
+PssBorderModel class >> symbol [
 	^ #bordeer
 ]
 
-{ #category : #accessing }
-PssBorder >> all [ 
-	^ self sideProperty all 
+{ #category : #'as yet unclassified' }
+PssBorderModel >> all [ 
+	^ self sideProperty all
 ]
 
 { #category : #API }
-PssBorder >> border: aValue [
+PssBorderModel >> border: aValue [
 	aValue border: self.
 ]
 
 { #category : #API }
-PssBorder >> borderBottom: aValue [
+PssBorderModel >> borderBottom: aValue [
 	aValue isArray
 		ifTrue: [ aValue borderBottom: self ]
 		ifFalse: [ 
@@ -35,22 +37,22 @@ PssBorder >> borderBottom: aValue [
 ]
 
 { #category : #API }
-PssBorder >> borderBottomColor: aValue [
+PssBorderModel >> borderBottomColor: aValue [
 	aValue border: self sideProperty bottom
 ]
 
 { #category : #API }
-PssBorder >> borderBottomStyle: aValue [
+PssBorderModel >> borderBottomStyle: aValue [
 	aValue border: self sideProperty bottom
 ]
 
 { #category : #API }
-PssBorder >> borderBottomWidth: aValue [
+PssBorderModel >> borderBottomWidth: aValue [
 	aValue border: self sideProperty bottom
 ]
 
 { #category : #API }
-PssBorder >> borderColor: aValue [
+PssBorderModel >> borderColor: aValue [
 	aValue isArray
 		ifTrue: [ aValue borderColor: self ]
 		ifFalse: [ 
@@ -62,7 +64,7 @@ PssBorder >> borderColor: aValue [
 ]
 
 { #category : #API }
-PssBorder >> borderLeft: aValue [
+PssBorderModel >> borderLeft: aValue [
 	aValue isArray
 		ifTrue: [ aValue borderLeft: self ]
 		ifFalse: [ 
@@ -74,28 +76,28 @@ PssBorder >> borderLeft: aValue [
 ]
 
 { #category : #API }
-PssBorder >> borderLeftColor: aValue [
+PssBorderModel >> borderLeftColor: aValue [
 	aValue border: self sideProperty left
 ]
 
 { #category : #API }
-PssBorder >> borderLeftStyle: aValue [
+PssBorderModel >> borderLeftStyle: aValue [
 	aValue border: self sideProperty left
 ]
 
 { #category : #API }
-PssBorder >> borderLeftWidth: aValue [
+PssBorderModel >> borderLeftWidth: aValue [
 	aValue border: self sideProperty left
 ]
 
 { #category : #API }
-PssBorder >> borderRadius: aValue [
+PssBorderModel >> borderRadius: aValue [
 	self flag: 'should be implemented'.
 	self shouldBeImplemented 
 ]
 
 { #category : #API }
-PssBorder >> borderRight: aValue [
+PssBorderModel >> borderRight: aValue [
 	aValue isArray
 		ifTrue: [ aValue borderRight: self ]
 		ifFalse: [ 
@@ -107,22 +109,22 @@ PssBorder >> borderRight: aValue [
 ]
 
 { #category : #API }
-PssBorder >> borderRightColor: aValue [
+PssBorderModel >> borderRightColor: aValue [
 	aValue border: self sideProperty right
 ]
 
 { #category : #API }
-PssBorder >> borderRightStyle: aValue [
+PssBorderModel >> borderRightStyle: aValue [
 	aValue border: self sideProperty right
 ]
 
 { #category : #API }
-PssBorder >> borderRightWidth: aValue [
+PssBorderModel >> borderRightWidth: aValue [
 	aValue border: self sideProperty right
 ]
 
 { #category : #API }
-PssBorder >> borderStyle: aValue [
+PssBorderModel >> borderStyle: aValue [
 	aValue isArray
 		ifTrue: [ aValue borderStyle: self ]
 		ifFalse: [ 
@@ -134,7 +136,7 @@ PssBorder >> borderStyle: aValue [
 ]
 
 { #category : #API }
-PssBorder >> borderTop: aValue [
+PssBorderModel >> borderTop: aValue [
 	aValue isArray
 		ifTrue: [ aValue borderTop: self ]
 		ifFalse: [ 
@@ -146,22 +148,22 @@ PssBorder >> borderTop: aValue [
 ]
 
 { #category : #API }
-PssBorder >> borderTopColor: aValue [
+PssBorderModel >> borderTopColor: aValue [
 	aValue border: self sideProperty top
 ]
 
 { #category : #API }
-PssBorder >> borderTopStyle: aValue [
+PssBorderModel >> borderTopStyle: aValue [
 	aValue border: self sideProperty top
 ]
 
 { #category : #API }
-PssBorder >> borderTopWidth: aValue [
+PssBorderModel >> borderTopWidth: aValue [
 	aValue border: self sideProperty top
 ]
 
 { #category : #API }
-PssBorder >> borderWidth: aValue [
+PssBorderModel >> borderWidth: aValue [
 	aValue isArray
 		ifTrue: [ aValue borderWidth: self ]
 		ifFalse: [ 
@@ -173,50 +175,45 @@ PssBorder >> borderWidth: aValue [
 ]
 
 { #category : #accessing }
-PssBorder >> bottom [ 
-	^ self sideProperty bottom 
+PssBorderModel >> bottom [ 
+	^ self sideProperty bottom
 ]
 
 { #category : #initialization }
-PssBorder >> initialize [
+PssBorderModel >> initialize [
 	super initialize.
 	
 	self sideProperty: PssSideProperty new.
-	self sideProperty setType: PssBorderProperty.
-]
-
-{ #category : #testing }
-PssBorder >> isUniform [
-	^ self sideProperty isUniform
+	self sideProperty setType: PssBorderValue.
 ]
 
 { #category : #accessing }
-PssBorder >> left [ 
-	^ self sideProperty left 
+PssBorderModel >> left [ 
+	^ self sideProperty left
 ]
 
-{ #category : #API }
-PssBorder >> overwriteMerge: aBorder [
+{ #category : #'as yet unclassified' }
+PssBorderModel >> overwriteMerge: aBorder [
 	self sideProperty overwriteMerge: aBorder sideProperty
 ]
 
 { #category : #accessing }
-PssBorder >> right [ 
-	^ self sideProperty right 
+PssBorderModel >> right [ 
+	^ self sideProperty right
 ]
 
 { #category : #accessing }
-PssBorder >> sideProperty [
+PssBorderModel >> sideProperty [
 	^ sideProperty
 ]
 
 { #category : #accessing }
-PssBorder >> sideProperty: aSideProperty [
+PssBorderModel >> sideProperty: aSideProperty [
 	sideProperty := aSideProperty.
-	sideProperty setType: PssBorderProperty.
+	sideProperty setType: PssBorderValue.
 ]
 
 { #category : #accessing }
-PssBorder >> top [ 
-	^ self sideProperty top 
+PssBorderModel >> top [ 
+	^ self sideProperty top
 ]

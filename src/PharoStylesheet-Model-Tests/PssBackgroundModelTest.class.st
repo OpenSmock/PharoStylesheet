@@ -2,7 +2,7 @@
 A PssBackgroundTest is a test class for testing the behavior of PssBackground
 "
 Class {
-	#name : #PssBackgroundTest,
+	#name : #PssBackgroundModelTest,
 	#superclass : #TestCase,
 	#traits : 'TPssModelTest',
 	#classTraits : 'TPssModelTest classTrait',
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : #tests }
-PssBackgroundTest >> testBackground [
+PssBackgroundModelTest >> testBackground [
 	| rule declaration property |
 	result := self parse: '.a { background: #ffffff url("img_tree.png") no-repeat right top; }'.
 	
@@ -26,7 +26,7 @@ PssBackgroundTest >> testBackground [
 	self assert: declaration property equals: #background.
 	
 	property := declaration model.
-	self assert: property class equals: PssBackground.
+	self assert: property class equals: PssBackgroundModel.
 	self assert: property attachment equals: #noRepeat.
 	self assert: property color equals: (Color fromHexString: #ffffff).
 	self assert: property image name equals: 'img_tree.png'.
@@ -36,7 +36,7 @@ PssBackgroundTest >> testBackground [
 ]
 
 { #category : #tests }
-PssBackgroundTest >> testBackgroundAttachment [
+PssBackgroundModelTest >> testBackgroundAttachment [
 	| rule declaration property |
 	result := self parse: '.a { background-attachment: fixed; }'.
 	
@@ -49,7 +49,7 @@ PssBackgroundTest >> testBackgroundAttachment [
 	self assert: declaration property equals: #background.
 	
 	property := declaration model.
-	self assert: property class equals: PssBackground.
+	self assert: property class equals: PssBackgroundModel.
 	self assert: property attachment equals: #fixed.
 	
 	self assert: property color equals: nil.
@@ -60,7 +60,7 @@ PssBackgroundTest >> testBackgroundAttachment [
 ]
 
 { #category : #tests }
-PssBackgroundTest >> testBackgroundColor [
+PssBackgroundModelTest >> testBackgroundColor [
 	| rule declaration property |
 	result := self parse: '.a { background-color: #123456; }'.
 	
@@ -73,7 +73,7 @@ PssBackgroundTest >> testBackgroundColor [
 	self assert: declaration property equals: #background.
 	
 	property := declaration model.
-	self assert: property class equals: PssBackground.
+	self assert: property class equals: PssBackgroundModel.
 	self assert: property color equals: (Color fromHexString: '123456').
 	self assert: property attachment equals: nil.
 	self assert: property image equals: nil.
@@ -83,7 +83,7 @@ PssBackgroundTest >> testBackgroundColor [
 ]
 
 { #category : #tests }
-PssBackgroundTest >> testBackgroundImage [
+PssBackgroundModelTest >> testBackgroundImage [
 	| rule declaration property |
 	result := self parse: '.a { background-image: url("paper.gif"); }'.
 	
@@ -96,7 +96,7 @@ PssBackgroundTest >> testBackgroundImage [
 	self assert: declaration property equals: #background.
 	
 	property := declaration model.
-	self assert: property class equals: PssBackground.
+	self assert: property class equals: PssBackgroundModel.
 	self assert: property image name equals: 'paper.gif'.
 	
 	self assert: property attachment equals: nil.
@@ -107,7 +107,7 @@ PssBackgroundTest >> testBackgroundImage [
 ]
 
 { #category : #tests }
-PssBackgroundTest >> testBackgroundPosition [
+PssBackgroundModelTest >> testBackgroundPosition [
 	| rule declaration property |
 	result := self parse: '.a { background-repeat: repeat-x; }'.
 	
@@ -120,7 +120,7 @@ PssBackgroundTest >> testBackgroundPosition [
 	self assert: declaration property equals: #background.
 	
 	property := declaration model.
-	self assert: property class equals: PssBackground.
+	self assert: property class equals: PssBackgroundModel.
 	self assert: property repeat equals: #repeatX.
 	
 	self assert: property attachment equals: nil.
@@ -131,7 +131,7 @@ PssBackgroundTest >> testBackgroundPosition [
 ]
 
 { #category : #tests }
-PssBackgroundTest >> testBackgroundRepeat [
+PssBackgroundModelTest >> testBackgroundRepeat [
 	| rule declaration property |
 	result := self parse: '.a { background-repeat: repeat-x; }'.
 	
@@ -144,7 +144,7 @@ PssBackgroundTest >> testBackgroundRepeat [
 	self assert: declaration property equals: #background.
 	
 	property := declaration model.
-	self assert: property class equals: PssBackground.
+	self assert: property class equals: PssBackgroundModel.
 	self assert: property repeat equals: #repeatX.
 	
 	self assert: property attachment equals: nil.
@@ -155,7 +155,14 @@ PssBackgroundTest >> testBackgroundRepeat [
 ]
 
 { #category : #test }
-PssBackgroundTest >> testOverwriteMerge [
+PssBackgroundModelTest >> testBackgroundSize [
+
+	self flag: #toImplement.
+	self assert: false
+]
+
+{ #category : #test }
+PssBackgroundModelTest >> testOverwriteMerge [
 
 	self flag: #toImplement.
 	self assert: false

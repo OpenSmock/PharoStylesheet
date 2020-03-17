@@ -4,8 +4,18 @@ Class {
 	#instVars : [
 		'value'
 	],
-	#category : #'PharoStylesheet-Model-Enumerations'
+	#category : #'PharoStylesheet-Model-Core'
 }
+
+{ #category : #'instance creation' }
+PssPropertyValue class >> inherit [ 
+	^ PssInherit new
+]
+
+{ #category : #'instance creation' }
+PssPropertyValue class >> initial [
+	^ PssInitial new
+]
 
 { #category : #comparing }
 PssPropertyValue >> = anEnum [

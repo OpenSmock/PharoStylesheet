@@ -24,12 +24,25 @@ PssFunctionValue >> args: anObject [
 
 { #category : #properties }
 PssFunctionValue >> background: aBackground [
-	aBackground image: (PssFunctionBuilder 
-		perform: self value asMutator 
-		withArguments: self args)
+	aBackground image: self value
+]
+
+{ #category : #properties }
+PssFunctionValue >> border: aSideProperty [
+	aSideProperty color: self value
 ]
 
 { #category : #testing }
 PssFunctionValue >> isFunction [
 	^ true
+]
+
+{ #category : #properties }
+PssFunctionValue >> linearGradient: aLinearGradient [
+	aLinearGradient storeColor: self value.
+]
+
+{ #category : #accessing }
+PssFunctionValue >> value [ 
+	^ PssFunctionBuilder perform: value asMutator with: self args
 ]

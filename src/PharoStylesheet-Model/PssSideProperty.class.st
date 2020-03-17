@@ -7,12 +7,12 @@ Class {
 		'bottom',
 		'left'
 	],
-	#category : #'PharoStylesheet-Model-Properties'
+	#category : #'PharoStylesheet-Model-Values'
 }
 
 { #category : #accessing }
 PssSideProperty >> all [
-	^ self isUniform 
+	^ self allSidesAreUniform 
 		ifTrue: [ top ]
 		ifFalse: [ nil ]
 ]
@@ -25,6 +25,11 @@ PssSideProperty >> all: anObject [
 	self left: anObject.
 ]
 
+{ #category : #testing }
+PssSideProperty >> allSidesAreUniform [
+	^ top = left and: [ top = right and: [ top = bottom ] ]
+]
+
 { #category : #accessing }
 PssSideProperty >> bottom [
 	^ bottom
@@ -35,9 +40,10 @@ PssSideProperty >> bottom: anObject [
 	bottom := anObject
 ]
 
-{ #category : #testing }
-PssSideProperty >> isUniform [
-	^ top = left and: [ top = right and: [ top = bottom ] ]
+{ #category : #initialization }
+PssSideProperty >> initialize [
+	super initialize.
+	self setType: PssSideValue
 ]
 
 { #category : #accessing }

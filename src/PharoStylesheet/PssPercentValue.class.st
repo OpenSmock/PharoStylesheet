@@ -13,3 +13,8 @@ PssPercentValue >> computeValueFrom: aTargetNode property: aSymbol [
 			^ pValue * self value ].
 	Error signal: 'a styleable parent must exist in order to apply a relative size '
 ]
+
+{ #category : #properties }
+PssPercentValue >> linearGradient: aLinearGradient [
+	aLinearGradient setStoredColorAt: self value
+]

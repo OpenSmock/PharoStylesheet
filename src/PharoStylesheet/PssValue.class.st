@@ -114,6 +114,11 @@ PssValue >> isFunction [
 ]
 
 { #category : #testing }
+PssValue >> isGradient [
+	^ false
+]
+
+{ #category : #testing }
 PssValue >> isPixelValue [
 	^ false
 ]

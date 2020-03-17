@@ -6,7 +6,7 @@ Class {
 		'radius',
 		'focalPoint'
 	],
-	#category : #'PharoStylesheet-Model-Properties'
+	#category : #'PharoStylesheet-Model-Values'
 }
 
 { #category : #accessing }

@@ -7,7 +7,14 @@ Class {
 	#category : #'PharoStylesheet-Model-Core'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
+PssModelPropertyDeclaration class >> newFrom: aDeclaration [
+	^ (super newFrom: aDeclaration)
+		model: (aDeclaration model copy);
+		yourself
+]
+
+{ #category : #'instance creation' }
 PssModelPropertyDeclaration class >> property: aSymbol model: aPropertyModel [
 	^ self new 
 		property: aSymbol;
@@ -15,9 +22,9 @@ PssModelPropertyDeclaration class >> property: aSymbol model: aPropertyModel [
 		yourself
 ]
 
-{ #category : #adding }
-PssModelPropertyDeclaration >> addTo: aRule [
-	aRule declarations add: self
+{ #category : #copying }
+PssModelPropertyDeclaration >> copy [ 
+	^ self class newFrom: self
 ]
 
 { #category : #accessing }
@@ -30,12 +37,13 @@ PssModelPropertyDeclaration >> model: aPropertyModel [
 	model := aPropertyModel
 ]
 
-{ #category : #accessing }
-PssModelPropertyDeclaration >> rule [
-	^ rule
-]
-
-{ #category : #accessing }
-PssModelPropertyDeclaration >> rule: anObject [
-	rule := anObject
+{ #category : #printing }
+PssModelPropertyDeclaration >> printOn: aStream [
+	super printOn: aStream.
+	aStream
+		<< $(
+		<< self property 
+		<< '->'.
+	self model printOn: aStream. 
+	aStream << $)
 ]

@@ -29,6 +29,34 @@ PssRule >> declarations: aDeclarationList [
 			d addTo: self ]
 ]
 
+{ #category : #'as yet unclassified' }
+PssRule >> declare: anAssoc [
+	self declare: anAssoc important: false
+]
+
+{ #category : #'as yet unclassified' }
+PssRule >> declare: anAssoc important: aBoolean [
+	self declarations
+		add:
+			(PssPropertyDeclaration new
+				property: anAssoc key;
+				value: anAssoc value asPssValue;
+				rule: self;
+				important: aBoolean;
+				yourself)
+]
+
+{ #category : #'as yet unclassified' }
+PssRule >> declareTransition: anAssoc [
+	self transitions
+		add:
+			(PssTransitionDeclaration new
+				property: anAssoc key;
+				valuesFromArray: anAssoc value;
+				rule: self;
+				yourself)
+]
+
 { #category : #'initialize-release' }
 PssRule >> initialize [
 	super initialize.
@@ -40,6 +68,19 @@ PssRule >> initialize [
 { #category : #accessing }
 PssRule >> origin [
 	^ stylesheet origin
+]
+
+{ #category : #printing }
+PssRule >> printOn: aStream [ 
+	super printOn: aStream.
+	aStream nextPut: $(.
+	self selectors first printOn: aStream.
+	self selectors allButFirstDo: [ :s |
+		aStream nextPutAll: ', '.
+		s printOn: aStream. 
+	].
+	aStream nextPut: $).
+		
 ]
 
 { #category : #accessing }

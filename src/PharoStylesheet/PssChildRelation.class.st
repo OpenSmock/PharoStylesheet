@@ -8,3 +8,8 @@ Class {
 PssChildRelation class >> isChild [
 	^ true
 ]
+
+{ #category : #printing }
+PssChildRelation class >> printOn: aStream [
+	aStream << $>
+]

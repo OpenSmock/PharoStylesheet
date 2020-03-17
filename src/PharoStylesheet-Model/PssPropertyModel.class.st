@@ -2,14 +2,30 @@ Class {
 	#name : #PssPropertyModel,
 	#superclass : #Object,
 	#instVars : [
-		'important'
+		'important',
+		'attributes'
 	],
-	#category : #'PharoStylesheet-Model-Properties'
+	#category : #'PharoStylesheet-Model-Core'
 }
+
+{ #category : #'instance creation' }
+PssPropertyModel class >> newFrom: aModel [
+	^ self new overwriteMerge: aModel
+]
 
 { #category : #accessing }
 PssPropertyModel class >> symbol [
 	^ self subclassResponsibility 
+]
+
+{ #category : #accessing }
+PssPropertyModel >> attributes [ 
+	^ attributes
+]
+
+{ #category : #copying }
+PssPropertyModel >> copy [ 
+	^ self class newFrom: self
 ]
 
 { #category : #accessing }
@@ -26,6 +42,7 @@ PssPropertyModel >> important: anObject [
 PssPropertyModel >> initialize [
 	super initialize.
 	important := false.
+	attributes := Set new.
 ]
 
 { #category : #API }

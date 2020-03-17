@@ -1,45 +1,45 @@
 Class {
-	#name : #PssListStyle,
+	#name : #PssListStyleModel,
 	#superclass : #PssPropertyModel,
 	#instVars : [
 		'type',
 		'position',
 		'image'
 	],
-	#category : #'PharoStylesheet-Model-Properties'
+	#category : #'PharoStylesheet-Model-Declarations'
 }
 
 { #category : #accessing }
-PssListStyle class >> symbol [
+PssListStyleModel class >> symbol [
 	^ #listStyle
 ]
 
 { #category : #accessing }
-PssListStyle >> image [
+PssListStyleModel >> image [
 	^ image
 ]
 
 { #category : #accessing }
-PssListStyle >> image: anObject [
+PssListStyleModel >> image: anObject [
 	image := anObject
 ]
 
 { #category : #accessing }
-PssListStyle >> position [
+PssListStyleModel >> position [
 	^ position
 ]
 
 { #category : #accessing }
-PssListStyle >> position: anObject [
+PssListStyleModel >> position: anObject [
 	position := anObject
 ]
 
 { #category : #accessing }
-PssListStyle >> type [
+PssListStyleModel >> type [
 	^ type
 ]
 
 { #category : #accessing }
-PssListStyle >> type: anObject [
+PssListStyleModel >> type: anObject [
 	type := anObject
 ]
