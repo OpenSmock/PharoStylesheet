@@ -275,12 +275,102 @@ PssDeclarationBuilder class >> borderWidth: aValue [
 	
 ]
 
-{ #category : #'properties-type' }
+{ #category : #'properties-text' }
+PssDeclarationBuilder class >> color: aValue [
+
+	| property |
+	property := self defaultTextClass new.
+	property color: aValue.
+	
+	^ #text -> property
+]
+
+{ #category : #defaults }
 PssDeclarationBuilder class >> defaultBackgroundClass [
 	^ PssBackground
 ]
 
-{ #category : #'properties-type' }
+{ #category : #defaults }
 PssDeclarationBuilder class >> defaultBorderClass [
 	^ PssBorder
+]
+
+{ #category : #defaults }
+PssDeclarationBuilder class >> defaultFontClass [
+	^ PssFont
+]
+
+{ #category : #defaults }
+PssDeclarationBuilder class >> defaultLengthClass [
+	^ PssLength
+]
+
+{ #category : #defaults }
+PssDeclarationBuilder class >> defaultMarginClass [
+	^ PssMargin
+]
+
+{ #category : #defaults }
+PssDeclarationBuilder class >> defaultTextClass [
+	^ PssText
+]
+
+{ #category : #'properties-font' }
+PssDeclarationBuilder class >> fontSize: aValue [
+	
+	| property |
+	property := self defaultFontClass new.
+	property size: aValue.
+	
+	^ #font -> property
+]
+
+{ #category : #'properties-font' }
+PssDeclarationBuilder class >> fontStyle: aValue [
+	
+	| property |
+	property := self defaultFontClass new.
+	property style: aValue.
+	
+	^ #font -> property
+]
+
+{ #category : #'properties-width' }
+PssDeclarationBuilder class >> height: aValue [
+
+	| property |
+	property := self defaultLengthClass new.
+	property value: aValue.
+	
+	^ #height -> property
+]
+
+{ #category : #'properties-margin' }
+PssDeclarationBuilder class >> margin: aValue [
+	
+	| property |
+	property := self defaultMarginClass new.
+	property margin: aValue.
+	
+	^ #margin -> property
+]
+
+{ #category : #'properties-text' }
+PssDeclarationBuilder class >> textAlign: aValue [
+
+	| property |
+	property := self defaultTextClass new.
+	property align: aValue.
+	
+	^ #text -> property
+]
+
+{ #category : #'properties-width' }
+PssDeclarationBuilder class >> width: aValue [
+
+	| property |
+	property := self defaultLengthClass new.
+	property value: aValue.
+	
+	^ #width -> property
 ]

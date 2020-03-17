@@ -1,6 +1,8 @@
 Class {
 	#name : #PssBorder,
 	#superclass : #PssPropertyModel,
+	#traits : 'TPssSideProperty',
+	#classTraits : 'TPssSideProperty classTrait',
 	#instVars : [
 		'sideProperty'
 	],
@@ -14,7 +16,7 @@ PssBorder class >> symbol [
 
 { #category : #accessing }
 PssBorder >> all [ 
-	^ self sideProperty all 
+	^ self sideProperty all
 ]
 
 { #category : #API }
@@ -174,7 +176,7 @@ PssBorder >> borderWidth: aValue [
 
 { #category : #accessing }
 PssBorder >> bottom [ 
-	^ self sideProperty bottom 
+	^ self sideProperty bottom
 ]
 
 { #category : #initialization }
@@ -182,7 +184,7 @@ PssBorder >> initialize [
 	super initialize.
 	
 	self sideProperty: PssSideProperty new.
-	self sideProperty setType: PssBorderProperty.
+	self sideProperty setType: PssSideBorderValue.
 ]
 
 { #category : #testing }
@@ -192,7 +194,7 @@ PssBorder >> isUniform [
 
 { #category : #accessing }
 PssBorder >> left [ 
-	^ self sideProperty left 
+	^ self sideProperty left
 ]
 
 { #category : #API }
@@ -202,7 +204,7 @@ PssBorder >> overwriteMerge: aBorder [
 
 { #category : #accessing }
 PssBorder >> right [ 
-	^ self sideProperty right 
+	^ self sideProperty right
 ]
 
 { #category : #accessing }
@@ -213,10 +215,10 @@ PssBorder >> sideProperty [
 { #category : #accessing }
 PssBorder >> sideProperty: aSideProperty [
 	sideProperty := aSideProperty.
-	sideProperty setType: PssBorderProperty.
+	sideProperty setType: PssSideBorderValue.
 ]
 
 { #category : #accessing }
 PssBorder >> top [ 
-	^ self sideProperty top 
+	^ self sideProperty top
 ]

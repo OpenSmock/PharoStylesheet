@@ -41,8 +41,8 @@ PssFont >> size [
 ]
 
 { #category : #accessing }
-PssFont >> size: anObject [
-	size := anObject
+PssFont >> size: aValue [
+	size := aValue
 ]
 
 { #category : #accessing }

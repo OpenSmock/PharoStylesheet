@@ -1,6 +1,8 @@
 Class {
 	#name : #PssMargin,
 	#superclass : #PssPropertyModel,
+	#traits : 'TPssSideProperty',
+	#classTraits : 'TPssSideProperty classTrait',
 	#instVars : [
 		'sideProperty'
 	],
@@ -12,9 +14,19 @@ PssMargin class >> symbol [
 	^ #margin
 ]
 
+{ #category : #initialization }
+PssMargin >> initialize [
+	super initialize.
+	
+	self sideProperty: PssSideProperty new.
+]
+
 { #category : #API }
 PssMargin >> margin: aValue [
-	aValue margin: self
+	aValue isArray
+		ifTrue: [ aValue margin: self ]
+		ifFalse: [ self sideProperty all: aValue ]
+	
 ]
 
 { #category : #API }
@@ -44,4 +56,9 @@ PssMargin >> marginTop: aValue [
 { #category : #accessing }
 PssMargin >> sideProperty [ 
 	^ sideProperty
+]
+
+{ #category : #accessing }
+PssMargin >> sideProperty: anObject [
+	sideProperty := anObject
 ]

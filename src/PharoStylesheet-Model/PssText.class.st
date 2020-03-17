@@ -71,6 +71,12 @@ PssText >> indent: anObject [
 	indent := anObject
 ]
 
+{ #category : #initialization }
+PssText >> initialize [
+	super initialize.
+	self align: PssTextAlign left.
+]
+
 { #category : #accessing }
 PssText >> letterSpacing [
 	^ letterSpacing

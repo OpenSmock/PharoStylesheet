@@ -35,6 +35,12 @@ PssSideProperty >> bottom: anObject [
 	bottom := anObject
 ]
 
+{ #category : #initialization }
+PssSideProperty >> initialize [
+	super initialize.
+	self setType: PssSideValue
+]
+
 { #category : #testing }
 PssSideProperty >> isUniform [
 	^ top = left and: [ top = right and: [ top = bottom ] ]

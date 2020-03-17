@@ -15,6 +15,11 @@ PssFontStyle class >> initial [
 ]
 
 { #category : #enumeration }
+PssFontStyle class >> italic [
+	^ self new value: #italic
+]
+
+{ #category : #enumeration }
 PssFontStyle class >> normal [
 	^ self new value: #normal
 ]

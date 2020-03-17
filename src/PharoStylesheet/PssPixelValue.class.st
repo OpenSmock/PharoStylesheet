@@ -13,3 +13,8 @@ PssPixelValue >> border: aBorderProperty [
 PssPixelValue >> isPixelValue [
 	^ true
 ]
+
+{ #category : #properties }
+PssPixelValue >> margin: aSideProperty [
+	aSideProperty value: self.
+]

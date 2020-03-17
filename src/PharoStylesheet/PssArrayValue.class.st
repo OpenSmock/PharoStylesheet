@@ -68,6 +68,11 @@ PssArrayValue >> isArray [
 	^ true
 ]
 
+{ #category : #properties }
+PssArrayValue >> margin: aMargin [
+	sidePropertyBlock value: aMargin sideProperty value: #value:
+]
+
 { #category : #initialization }
 PssArrayValue >> setSidePropertyForFourValues [
 	sidePropertyBlock := [ :aSideProperty :aMutator |
