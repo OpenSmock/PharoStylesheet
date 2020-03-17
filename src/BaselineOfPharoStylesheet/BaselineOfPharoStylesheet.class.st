@@ -12,7 +12,9 @@ BaselineOfPharoStylesheet >> baseline: spec [
 		self petitParser: spec.
 		spec 
 			package: #'PharoStylesheet' with: [ spec requires: #(#'PetitParser') ];
-			package: #'PharoStylesheet-Tests' with: [ spec requires: #(#'PharoStylesheet') ]
+			package: #'PharoStylesheet-Tests' with: [ spec requires: #(#'PharoStylesheet') ];
+			package: #'PharoStylesheet-Model' with: [ spec requires: #(#'PharoStylesheet') ];
+			package: #'PharoStylesheet-Model-Tests' with: [ spec requires: #(#'PharoStylesheet-Model') ]
 	]
 ]
 
