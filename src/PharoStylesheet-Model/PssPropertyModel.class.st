@@ -10,7 +10,9 @@ Class {
 
 { #category : #'instance creation' }
 PssPropertyModel class >> newFrom: aModel [
-	^ self new overwriteMerge: aModel
+	^ self new
+		important: aModel important; 
+		overwriteMerge: aModel
 ]
 
 { #category : #accessing }
