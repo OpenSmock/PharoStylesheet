@@ -7,6 +7,6 @@ CSS2+ parser and related meta-model for Pharo.
 ```Smalltalk
 Metacello new
    baseline: 'PharoStylesheet';
-   repository: 'github://GlennCavarle/PharoStylesheet/src';
+   repository: 'github://OpenSmock/PharoStylesheet/src';
    load
 ```
